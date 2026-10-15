@@ -27,12 +27,12 @@ export default function Cart() {
 
   if (loading && cartItems.length === 0) {
     return (
-      <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col transition-colors duration-200">
         <Navbar />
         <div className="flex-1 flex items-center justify-center py-20" id="cart-loading-state">
           <div className="text-center space-y-3">
-            <div className="w-8 h-8 border-2 border-slate-200 border-t-emerald-600 rounded-full animate-spin mx-auto" />
-            <p className="text-sm font-medium text-slate-500">Loading your cart...</p>
+            <div className="w-8 h-8 border-2 border-slate-200 dark:border-slate-700 border-t-emerald-600 rounded-full animate-spin mx-auto" />
+            <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Loading your cart...</p>
           </div>
         </div>
       </div>
@@ -41,15 +41,15 @@ export default function Cart() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col transition-colors duration-200">
         <Navbar />
         <div className="flex-1 flex items-center justify-center p-4" id="cart-error-state">
-          <div className="max-w-md w-full bg-white border border-red-200 rounded-2xl p-6 text-center space-y-4 shadow-xs">
-            <h2 className="text-lg font-bold text-red-600">Error Loading Cart</h2>
-            <p className="text-sm text-slate-500">{error}</p>
+          <div className="max-w-md w-full bg-white dark:bg-slate-900 border border-red-200 dark:border-red-900/60 rounded-2xl p-6 text-center space-y-4 shadow-xs">
+            <h2 className="text-lg font-bold text-red-600 dark:text-red-400">Error Loading Cart</h2>
+            <p className="text-sm text-slate-500 dark:text-slate-400">{error}</p>
             <button
               onClick={() => window.location.reload()}
-              className="px-4 py-2 rounded-lg text-xs font-semibold text-white bg-slate-900 hover:bg-emerald-600 transition cursor-pointer"
+              className="px-4 py-2 rounded-lg text-xs font-semibold text-white bg-slate-900 hover:bg-emerald-600 dark:bg-emerald-600 dark:hover:bg-emerald-500 transition cursor-pointer"
             >
               Retry
             </button>
@@ -61,25 +61,25 @@ export default function Cart() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col transition-colors duration-200">
         <Navbar />
         <div className="flex-1 flex items-center justify-center px-4 py-16" id="cart-empty-state">
-          <div className="max-w-md w-full bg-white border border-slate-200/90 rounded-2xl p-8 text-center space-y-4 shadow-xs">
-            <div className="w-14 h-14 mx-auto rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 text-2xl font-bold">
+          <div className="max-w-md w-full bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-2xl p-8 text-center space-y-4 shadow-xs">
+            <div className="w-14 h-14 mx-auto rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-200 text-2xl font-bold">
               🛒
             </div>
             <div className="space-y-1">
-              <h2 className="text-xl font-bold text-slate-900">
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white">
                 Your cart is empty
               </h2>
-              <p className="text-sm text-slate-500 max-w-xs mx-auto leading-relaxed">
+              <p className="text-sm text-slate-500 dark:text-slate-400 max-w-xs mx-auto leading-relaxed">
                 Add products from our catalog to get started.
               </p>
             </div>
             <div className="pt-2">
               <Link
                 to="/products"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-semibold text-white bg-slate-900 hover:bg-emerald-600 transition-colors cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-semibold text-white bg-slate-900 hover:bg-emerald-600 dark:bg-emerald-600 dark:hover:bg-emerald-500 transition-colors cursor-pointer"
                 id="browse-products-btn"
               >
                 <span>Browse Products</span>
@@ -93,30 +93,30 @@ export default function Cart() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col transition-colors duration-200">
       <Navbar />
       <div className="px-4 py-8 md:py-10 flex-1">
         <div className="max-w-5xl mx-auto space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200/80 pb-5">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200/80 dark:border-slate-800 pb-5">
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
                 Shopping Cart
               </h1>
-              <p className="text-slate-500 text-sm mt-1">
-                <span className="font-semibold text-slate-900">{cartCount}</span> {cartCount === 1 ? 'item' : 'items'} in your cart
+              <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
+                <span className="font-semibold text-slate-900 dark:text-white">{cartCount}</span> {cartCount === 1 ? 'item' : 'items'} in your cart
               </p>
             </div>
 
             <div className="flex items-center gap-2.5">
               <button
                 onClick={handleClearCart}
-                className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-500 hover:text-red-600 hover:bg-red-50 border border-slate-200 transition cursor-pointer"
+                className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-500 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/60 border border-slate-200 dark:border-slate-800 transition cursor-pointer"
               >
                 Clear Cart
               </button>
               <Link
                 to="/products"
-                className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 transition inline-flex items-center gap-1.5 shadow-xs"
+                className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition inline-flex items-center gap-1.5 shadow-xs"
               >
                 <span>Continue Shopping</span>
               </Link>
@@ -133,32 +133,32 @@ export default function Cart() {
               ))}
             </div>
 
-            <div className="bg-white border border-slate-200/90 rounded-2xl p-6 space-y-5 shadow-xs sticky top-24">
-              <h2 className="text-base font-bold text-slate-900 pb-3 border-b border-slate-100">
+            <div className="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-2xl p-6 space-y-5 shadow-xs sticky top-24">
+              <h2 className="text-base font-bold text-slate-900 dark:text-white pb-3 border-b border-slate-100 dark:border-slate-800">
                 Order Summary
               </h2>
 
               <div className="space-y-3 text-sm">
-                <div className="flex justify-between text-slate-500 text-xs">
+                <div className="flex justify-between text-slate-500 dark:text-slate-400 text-xs">
                   <span>Items ({uniqueItemsCount} products)</span>
-                  <span className="font-semibold text-slate-800" id="summary-items-count">{cartCount} units</span>
+                  <span className="font-semibold text-slate-800 dark:text-slate-200" id="summary-items-count">{cartCount} units</span>
                 </div>
 
-                <div className="flex justify-between text-slate-500 text-xs">
+                <div className="flex justify-between text-slate-500 dark:text-slate-400 text-xs">
                   <span>Subtotal</span>
-                  <span className="font-semibold text-slate-900" id="summary-subtotal">
+                  <span className="font-semibold text-slate-900 dark:text-white" id="summary-subtotal">
                     ₹{subtotal.toLocaleString('en-IN')}
                   </span>
                 </div>
 
-                <div className="flex justify-between text-slate-500 text-xs">
+                <div className="flex justify-between text-slate-500 dark:text-slate-400 text-xs">
                   <span>Estimated Shipping</span>
-                  <span className="text-emerald-700 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded">FREE</span>
+                  <span className="text-emerald-700 dark:text-emerald-300 font-semibold bg-emerald-50 dark:bg-emerald-950/60 px-1.5 py-0.5 rounded">FREE</span>
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 flex justify-between items-baseline">
-                  <span className="text-sm font-semibold text-slate-900">Total</span>
-                  <span className="text-2xl font-bold text-slate-900" id="summary-total">
+                <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-baseline">
+                  <span className="text-sm font-semibold text-slate-900 dark:text-white">Total</span>
+                  <span className="text-2xl font-bold text-slate-900 dark:text-white" id="summary-total">
                     ₹{subtotal.toLocaleString('en-IN')}
                   </span>
                 </div>
@@ -167,7 +167,7 @@ export default function Cart() {
               <button
                 onClick={handleCheckout}
                 type="button"
-                className="w-full py-3 px-4 rounded-xl font-semibold text-sm text-white bg-slate-900 hover:bg-emerald-600 transition-colors cursor-pointer flex items-center justify-center gap-2"
+                className="w-full py-3 px-4 rounded-xl font-semibold text-sm text-white bg-slate-900 hover:bg-emerald-600 dark:bg-emerald-600 dark:hover:bg-emerald-500 transition-colors cursor-pointer flex items-center justify-center gap-2"
                 id="proceed-to-checkout-btn"
               >
                 <span>Proceed to Checkout</span>
@@ -175,7 +175,7 @@ export default function Cart() {
               </button>
 
               <div className="text-center pt-1">
-                <span className="text-[11px] text-slate-400">
+                <span className="text-[11px] text-slate-400 dark:text-slate-500">
                   🔒 Razorpay test payment with instant receipt
                 </span>
               </div>

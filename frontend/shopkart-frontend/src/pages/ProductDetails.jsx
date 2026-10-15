@@ -140,14 +140,14 @@ export default function ProductDetails() {
     };
 
     return (
-        <div className="min-h-screen bg-slate-50 text-slate-900">
+        <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
             <Navbar />
 
             <main className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
                 <div className="mb-6">
                     <Link
                         to="/products"
-                        className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 hover:text-slate-900 transition"
+                        className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition"
                     >
                         <span>&larr;</span>
                         <span>Back to all products</span>
@@ -155,18 +155,18 @@ export default function ProductDetails() {
                 </div>
 
                 {loading && (
-                    <div className="text-center py-20 bg-white rounded-2xl border border-slate-200/90 shadow-xs">
-                        <div className="w-8 h-8 border-2 border-slate-200 border-t-emerald-600 rounded-full animate-spin mx-auto mb-3" />
-                        <p className="text-slate-700 font-medium text-sm">Loading details...</p>
+                    <div className="text-center py-20 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-xs">
+                        <div className="w-8 h-8 border-2 border-slate-200 dark:border-slate-700 border-t-emerald-600 rounded-full animate-spin mx-auto mb-3" />
+                        <p className="text-slate-700 dark:text-slate-300 font-medium text-sm">Loading details...</p>
                     </div>
                 )}
 
                 {!loading && error && (
-                    <div className="text-center py-16 bg-white rounded-2xl border border-red-200 p-8 shadow-xs max-w-lg mx-auto">
-                        <p className="text-red-600 font-semibold mb-4 text-sm">{error}</p>
+                    <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-2xl border border-red-200 dark:border-red-900/60 p-8 shadow-xs max-w-lg mx-auto">
+                        <p className="text-red-600 dark:text-red-400 font-semibold mb-4 text-sm">{error}</p>
                         <Link
                             to="/products"
-                            className="inline-block bg-slate-900 hover:bg-emerald-600 text-white px-5 py-2 rounded-lg text-xs font-medium transition"
+                            className="inline-block bg-slate-900 hover:bg-emerald-600 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white px-5 py-2 rounded-lg text-xs font-medium transition"
                         >
                             Return to catalog
                         </Link>
@@ -174,13 +174,13 @@ export default function ProductDetails() {
                 )}
 
                 {!loading && !error && product && (
-                    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs overflow-hidden">
+                    <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-xs overflow-hidden">
                         <div className="grid grid-cols-1 md:grid-cols-2">
-                            <div className="bg-slate-50 relative flex items-center justify-center p-6 sm:p-10 border-b md:border-b-0 md:border-r border-slate-100">
+                            <div className="bg-slate-50 dark:bg-slate-800/40 relative flex items-center justify-center p-6 sm:p-10 border-b md:border-b-0 md:border-r border-slate-100 dark:border-slate-800">
                                 <img
                                     src={product.image}
                                     alt={product.name}
-                                    className="w-full h-auto max-h-[380px] object-contain mix-blend-multiply"
+                                    className="w-full h-auto max-h-[380px] object-contain mix-blend-multiply dark:mix-blend-normal"
                                     onError={(e) => {
                                         e.currentTarget.src = "/images/products/placeholder.svg";
                                     }}
@@ -190,14 +190,14 @@ export default function ProductDetails() {
                             <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
                                 <div>
                                     <div className="flex items-center justify-between mb-3">
-                                        <span className="text-[11px] font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200/60 px-2.5 py-0.5 rounded">
+                                        <span className="text-[11px] font-semibold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/60 dark:border-emerald-800/60 px-2.5 py-0.5 rounded">
                                             {product.category}
                                         </span>
                                         <span
                                             className={`text-xs font-medium px-2.5 py-0.5 rounded ${
                                                 product.stock > 0
-                                                    ? "bg-emerald-50 text-emerald-800"
-                                                    : "bg-red-50 text-red-700"
+                                                    ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300"
+                                                    : "bg-red-50 dark:bg-red-950/60 text-red-700 dark:text-red-300"
                                             }`}
                                         >
                                             {product.stock > 0
@@ -206,19 +206,19 @@ export default function ProductDetails() {
                                         </span>
                                     </div>
 
-                                    <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-3">
+                                    <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight mb-3">
                                         {product.name}
                                     </h1>
 
                                     <div className="mb-6">
-                                        <p className="text-3xl font-bold text-slate-900">
+                                        <p className="text-3xl font-bold text-slate-900 dark:text-white">
                                             ₹{Number(product.price).toLocaleString("en-IN")}
                                         </p>
                                     </div>
 
-                                    <div className="border-t border-slate-100 pt-5 mb-6">
-                                        <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Description</h3>
-                                        <p className="text-slate-600 leading-relaxed text-sm">
+                                    <div className="border-t border-slate-100 dark:border-slate-800 pt-5 mb-6">
+                                        <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">Description</h3>
+                                        <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm">
                                             {product.description}
                                         </p>
                                     </div>
@@ -226,32 +226,32 @@ export default function ProductDetails() {
 
                                 <div>
                                     {feedbackMsg && (
-                                        <div className="p-2.5 mb-4 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-medium text-center">
+                                        <div className="p-2.5 mb-4 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 text-emerald-800 dark:text-emerald-300 text-xs font-medium text-center">
                                             {feedbackMsg}
                                         </div>
                                     )}
 
-                                    <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-100">
+                                    <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
                                         {inCart ? (
-                                            <div className="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg p-1.5 min-w-[180px]">
+                                            <div className="flex items-center justify-between bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg p-1.5 min-w-[180px]">
                                                 <button
                                                     type="button"
                                                     onClick={handleDecrease}
                                                     disabled={cartLoading}
-                                                    className="w-9 h-9 rounded bg-white text-slate-700 font-bold border border-slate-200 hover:bg-slate-100 flex items-center justify-center transition disabled:opacity-40 cursor-pointer"
+                                                    className="w-9 h-9 rounded bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold border border-slate-200 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-600 flex items-center justify-center transition disabled:opacity-40 cursor-pointer"
                                                 >
                                                     -
                                                 </button>
 
-                                                <div className="text-xs font-semibold px-2 text-slate-700">
-                                                    Qty: <span className="text-slate-900 font-bold">{quantityInCart}</span>
+                                                <div className="text-xs font-semibold px-2 text-slate-700 dark:text-slate-300">
+                                                    Qty: <span className="text-slate-900 dark:text-white font-bold">{quantityInCart}</span>
                                                 </div>
 
                                                 <button
                                                     type="button"
                                                     onClick={handleIncrease}
                                                     disabled={cartLoading || quantityInCart >= product.stock}
-                                                    className="w-9 h-9 rounded bg-white text-slate-700 font-bold border border-slate-200 hover:bg-slate-100 flex items-center justify-center transition disabled:opacity-40 cursor-pointer"
+                                                    className="w-9 h-9 rounded bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold border border-slate-200 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-600 flex items-center justify-center transition disabled:opacity-40 cursor-pointer"
                                                 >
                                                     +
                                                 </button>
@@ -261,7 +261,7 @@ export default function ProductDetails() {
                                                 type="button"
                                                 onClick={handleAddToCart}
                                                 disabled={cartLoading || product.stock <= 0}
-                                                className="bg-slate-900 hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold transition text-sm disabled:opacity-40 cursor-pointer flex-1"
+                                                className="bg-slate-900 hover:bg-emerald-600 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white px-6 py-3 rounded-lg font-semibold transition text-sm disabled:opacity-40 cursor-pointer flex-1"
                                             >
                                                 {cartLoading ? "Adding..." : product.stock <= 0 ? "Out of stock" : "Add to Cart"}
                                             </button>
@@ -273,8 +273,8 @@ export default function ProductDetails() {
                                             disabled={wishlistLoading}
                                             className={`px-5 py-3 rounded-lg font-medium text-sm transition border cursor-pointer ${
                                                 isWishlisted
-                                                    ? "bg-red-50 text-red-700 border-red-200 hover:bg-red-100"
-                                                    : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
+                                                    ? "bg-red-50 dark:bg-red-950/60 text-red-700 dark:text-red-300 border-red-200 dark:border-red-900/60 hover:bg-red-100 dark:hover:bg-red-900/80"
+                                                    : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700"
                                             }`}
                                         >
                                             {wishlistLoading ? "Saving..." : isWishlisted ? "❤️ Saved" : "🤍 Save"}

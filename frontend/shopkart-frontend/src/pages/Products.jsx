@@ -69,22 +69,22 @@ export default function Products() {
     };
 
     return (
-        <div className="min-h-screen bg-slate-50 text-slate-900">
+        <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
             <Navbar />
 
             <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
                 <div className="mb-6">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div>
-                            <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+                            <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
                                 Products
                             </h1>
-                            <p className="text-slate-500 text-sm mt-1">
+                            <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
                                 Curated electronics, apparel, and lifestyle goods.
                             </p>
                         </div>
                         {products.length > 0 && (
-                            <span className="self-start sm:self-auto text-xs font-semibold px-3 py-1 rounded-full bg-white text-slate-700 border border-slate-200 shadow-xs">
+                            <span className="self-start sm:self-auto text-xs font-semibold px-3 py-1 rounded-full bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 shadow-xs">
                                 {products.length} {products.length === 1 ? 'item' : 'items'}
                             </span>
                         )}
@@ -101,29 +101,29 @@ export default function Products() {
                 />
 
                 {loading && (
-                    <div className="text-center py-20 bg-white rounded-xl border border-slate-200/90 shadow-xs">
-                        <div className="w-8 h-8 border-2 border-slate-200 border-t-emerald-600 rounded-full animate-spin mx-auto mb-3" />
-                        <p className="text-slate-700 font-medium text-sm">Loading items...</p>
+                    <div className="text-center py-20 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/90 dark:border-slate-800 shadow-xs">
+                        <div className="w-8 h-8 border-2 border-slate-200 dark:border-slate-700 border-t-emerald-600 rounded-full animate-spin mx-auto mb-3" />
+                        <p className="text-slate-700 dark:text-slate-300 font-medium text-sm">Loading items...</p>
                     </div>
                 )}
 
                 {!loading && error && (
-                    <div className="text-center py-16 bg-white rounded-xl border border-red-200 p-8 shadow-xs">
-                        <p className="text-red-600 font-semibold mb-2 text-sm">{error}</p>
-                        <p className="text-slate-500 text-xs">Please refresh or try again shortly.</p>
+                    <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-xl border border-red-200 dark:border-red-900/60 p-8 shadow-xs">
+                        <p className="text-red-600 dark:text-red-400 font-semibold mb-2 text-sm">{error}</p>
+                        <p className="text-slate-500 dark:text-slate-400 text-xs">Please refresh or try again shortly.</p>
                     </div>
                 )}
 
                 {!loading && !error && products.length === 0 && (
-                    <div className="text-center py-16 bg-white rounded-xl border border-slate-200/90 p-8 shadow-xs">
-                        <h3 className="text-base font-semibold text-slate-900 mb-1">No products found</h3>
-                        <p className="text-slate-500 text-xs max-w-sm mx-auto mb-5">
+                    <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/90 dark:border-slate-800 p-8 shadow-xs">
+                        <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">No products found</h3>
+                        <p className="text-slate-500 dark:text-slate-400 text-xs max-w-sm mx-auto mb-5">
                             We couldn't find items matching your search or filters.
                         </p>
                         {(search || category) && (
                             <button
                                 onClick={() => { setSearch(''); setCategory(''); }}
-                                className="px-4 py-2 rounded-lg bg-slate-900 hover:bg-emerald-600 text-white text-xs font-medium transition cursor-pointer"
+                                className="px-4 py-2 rounded-lg bg-slate-900 hover:bg-emerald-600 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-xs font-medium transition cursor-pointer"
                             >
                                 Clear filters
                             </button>

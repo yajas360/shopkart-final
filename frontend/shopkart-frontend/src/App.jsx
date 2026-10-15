@@ -12,14 +12,16 @@ import Orders from './pages/Orders';
 import OrderDetails from './pages/OrderDetails';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
+import { ThemeProvider } from './context/ThemeContext';
 import PublicRoute from './components/PublicRoute';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
-    <AuthProvider>
-      <CartProvider>
-        <BrowserRouter>
+    <ThemeProvider>
+      <AuthProvider>
+        <CartProvider>
+          <BrowserRouter>
           <Routes>
 
             <Route
@@ -90,6 +92,7 @@ function App() {
         </BrowserRouter>
       </CartProvider>
     </AuthProvider>
+    </ThemeProvider>
   );
 }
 

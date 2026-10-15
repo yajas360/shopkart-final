@@ -93,13 +93,13 @@ export default function ProductCard({ product, isWishlisted: initialIsWishlisted
     };
 
     return (
-        <div className="bg-white rounded-xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between group">
+        <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-xs hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-200 flex flex-col justify-between group">
             <div>
-                <div className="relative bg-slate-50 overflow-hidden aspect-4/3 flex items-center justify-center p-3">
+                <div className="relative bg-slate-50 dark:bg-slate-800/40 overflow-hidden aspect-4/3 flex items-center justify-center p-3">
                     <img
                         src={product.image}
                         alt={product.name}
-                        className="w-full h-full object-contain mix-blend-multiply group-hover:scale-102 transition-transform duration-300"
+                        className="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal group-hover:scale-102 transition-transform duration-300"
                         onError={(e) => {
                             e.currentTarget.src = "/images/products/placeholder.svg";
                         }}
@@ -110,8 +110,8 @@ export default function ProductCard({ product, isWishlisted: initialIsWishlisted
                         title={isWishlisted ? "Remove from Wishlist" : "Save to Wishlist"}
                         className={`absolute top-2.5 right-2.5 p-2 rounded-lg transition cursor-pointer shadow-xs ${
                             isWishlisted
-                                ? "bg-red-50 text-red-600 border border-red-200"
-                                : "bg-white/90 text-slate-400 hover:text-red-500 border border-slate-200 hover:bg-white"
+                                ? "bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-900/60"
+                                : "bg-white/90 dark:bg-slate-800/90 text-slate-400 hover:text-red-500 dark:hover:text-red-400 border border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-800"
                         }`}
                     >
                         <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -122,25 +122,25 @@ export default function ProductCard({ product, isWishlisted: initialIsWishlisted
 
                 <div className="p-4 sm:p-5">
                     <div className="flex items-center justify-between mb-2">
-                        <span className="text-[11px] font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded">
+                        <span className="text-[11px] font-semibold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/60 dark:border-emerald-800/60 px-2 py-0.5 rounded">
                             {product.category}
                         </span>
                         <span
                             className={`text-[11px] font-medium px-2 py-0.5 rounded ${
                                 product.stock > 0
-                                    ? "text-emerald-700 bg-emerald-50"
-                                    : "text-red-700 bg-red-50"
+                                    ? "text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60"
+                                    : "text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-950/60"
                             }`}
                         >
                             {product.stock > 0 ? `${product.stock} in stock` : "Out of stock"}
                         </span>
                     </div>
 
-                    <h3 className="text-base font-semibold text-slate-900 mb-1.5 line-clamp-1 group-hover:text-emerald-700 transition-colors">
+                    <h3 className="text-base font-semibold text-slate-900 dark:text-slate-100 mb-1.5 line-clamp-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                         {product.name}
                     </h3>
 
-                    <p className="text-lg font-bold text-slate-900">
+                    <p className="text-lg font-bold text-slate-900 dark:text-white">
                         ₹{Number(product.price).toLocaleString("en-IN")}
                     </p>
                 </div>
@@ -148,13 +148,13 @@ export default function ProductCard({ product, isWishlisted: initialIsWishlisted
 
             <div className="px-4 pb-4 sm:px-5 sm:pb-5 space-y-2">
                 {errorMessage && (
-                    <p className="text-xs text-red-600 bg-red-50 border border-red-200 py-1 px-2 rounded text-center">
+                    <p className="text-xs text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-900/60 py-1 px-2 rounded text-center">
                         {errorMessage}
                     </p>
                 )}
 
                 {cartFeedback && (
-                    <p className="text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 py-1 px-2 rounded text-center font-medium">
+                    <p className="text-xs text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 py-1 px-2 rounded text-center font-medium">
                         {cartFeedback}
                     </p>
                 )}
@@ -162,7 +162,7 @@ export default function ProductCard({ product, isWishlisted: initialIsWishlisted
                 <div className="grid grid-cols-2 gap-2">
                     <Link
                         to={`/products/${product._id}`}
-                        className="text-center bg-slate-100 hover:bg-slate-200 text-slate-800 py-2 rounded-lg font-medium text-xs transition"
+                        className="text-center bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 py-2 rounded-lg font-medium text-xs transition"
                     >
                         Details
                     </Link>
@@ -172,8 +172,8 @@ export default function ProductCard({ product, isWishlisted: initialIsWishlisted
                         disabled={loading}
                         className={`py-2 px-1 rounded-lg font-medium text-xs transition border cursor-pointer ${
                             isWishlisted
-                                ? "bg-red-50 text-red-700 border-red-200 hover:bg-red-100"
-                                : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
+                                ? "bg-red-50 dark:bg-red-950/60 text-red-700 dark:text-red-300 border-red-200 dark:border-red-900/60 hover:bg-red-100 dark:hover:bg-red-900/80"
+                                : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700"
                         }`}
                     >
                         {loading ? "Saving..." : isWishlisted ? "Saved" : "Save"}
@@ -181,25 +181,25 @@ export default function ProductCard({ product, isWishlisted: initialIsWishlisted
                 </div>
 
                 {inCart ? (
-                    <div className="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg p-1">
+                    <div className="flex items-center justify-between bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg p-1">
                         <button
                             type="button"
                             onClick={handleDecrease}
                             disabled={cartLoading}
-                            className="w-7 h-7 rounded bg-white text-slate-700 hover:bg-slate-200 font-bold border border-slate-200 flex items-center justify-center transition disabled:opacity-40 cursor-pointer"
+                            className="w-7 h-7 rounded bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 font-bold border border-slate-200 dark:border-slate-600 flex items-center justify-center transition disabled:opacity-40 cursor-pointer"
                         >
                             -
                         </button>
 
-                        <div className="text-xs font-semibold text-slate-700">
-                            Qty: <span className="text-slate-900 font-bold">{quantityInCart}</span>
+                        <div className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+                            Qty: <span className="text-slate-900 dark:text-white font-bold">{quantityInCart}</span>
                         </div>
 
                         <button
                             type="button"
                             onClick={handleIncrease}
                             disabled={cartLoading || quantityInCart >= product.stock}
-                            className="w-7 h-7 rounded bg-white text-slate-700 hover:bg-slate-200 font-bold border border-slate-200 flex items-center justify-center transition disabled:opacity-40 cursor-pointer"
+                            className="w-7 h-7 rounded bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 font-bold border border-slate-200 dark:border-slate-600 flex items-center justify-center transition disabled:opacity-40 cursor-pointer"
                         >
                             +
                         </button>
@@ -208,7 +208,7 @@ export default function ProductCard({ product, isWishlisted: initialIsWishlisted
                     <button
                         onClick={handleAddToCart}
                         disabled={cartLoading || product.stock <= 0}
-                        className="w-full py-2.5 rounded-lg font-semibold text-xs sm:text-sm transition bg-slate-900 hover:bg-emerald-600 text-white disabled:opacity-40 disabled:hover:bg-slate-900 cursor-pointer shadow-xs"
+                        className="w-full py-2.5 rounded-lg font-semibold text-xs sm:text-sm transition bg-slate-900 hover:bg-emerald-600 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white disabled:opacity-40 disabled:hover:bg-slate-900 cursor-pointer shadow-xs"
                     >
                         {cartLoading ? "Adding..." : product.stock <= 0 ? "Out of Stock" : "Add to Cart"}
                     </button>
